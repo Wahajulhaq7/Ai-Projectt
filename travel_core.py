@@ -215,7 +215,7 @@ class ItineraryPlanner:
                 daily_plan.append(f"Afternoon: {selected_activities[activity_index]}")
                 activity_index += 1
             
-            # RULE 6: Nightlife Rule
+            # RULE 6: Nightlife
             if 'nightlife' in user_interests:
                 daily_plan.append("Evening: Explore local nightlife or bars.")
             else:
