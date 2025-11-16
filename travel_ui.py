@@ -9,12 +9,18 @@ def run_ui():
 
     st.set_page_config(layout="wide", page_title="AI Virtual Travel Guide")
 
-    # Custom CSS to hide Streamlit header and footer elements
+    # Custom CSS to hide Streamlit header, footer, and status bar
     hide_st_style = """
     <style>
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        header {visibility: hidden;}
+    /* Hides the hamburger menu */
+    #MainMenu {visibility: hidden;}
+    /* Hides the "Made with Streamlit" footer */
+    footer {visibility: hidden;}
+    /* Hides the main header bar */
+    header {visibility: hidden;}
+    /* Hides the deployment status/manage app button in the bottom corner */
+    .stDeployButton {visibility: hidden;} 
+    .stStatusWidget {visibility: hidden;}
     </style>
     """
     st.markdown(hide_st_style, unsafe_allow_html=True)
