@@ -1,0 +1,62 @@
+[
+  {
+    "id": "start",
+    "text": "The year is 2142. You are the lone engineer at Lunar Outpost 7. A critical alarm blares: the Oxygen Recycler is failing. You have a few minutes before pressure drops. What is your priority?",
+    "choices": [
+      {"label": "Rush to the Recycler (Direct fix)", "next": "recycler_path", "health_change": -5},
+      {"label": "Find the Emergency Supplies (Cautious)", "next": "supply_path", "courage_change": 10}
+    ]
+  },
+  {
+    "id": "recycler_path",
+    "text": "You sprint through the corridors, the low gravity making every step a leap. You trip over a loose cable and bruise your arm, but you reach the Recycler. It's sparking heavily.",
+    "choices": [
+      {"label": "Attempt manual override (Requires Courage >= 20)", "next": "override_attempt", "courage_required": 20},
+      {"label": "Use the remote drone to inspect the fuse box", "next": "drone_inspection"}
+    ]
+  },
+  {
+    "id": "supply_path",
+    "text": "You locate the emergency oxygen tanks. You feel a surge of confidence knowing you have a backup. You now head towards the Recycler, taking a safer route.",
+    "choices": [
+      {"label": "Proceed directly to the Recycler", "next": "recycler_path_safe"}
+    ]
+  },
+  {
+    "id": "recycler_path_safe",
+    "text": "You safely reach the sparking Recycler. The alarm is louder now. Your health is stable.",
+    "choices": [
+      {"label": "Attempt manual override (Requires Courage >= 20)", "next": "override_attempt", "courage_required": 20},
+      {"label": "Use the remote drone to inspect the fuse box", "next": "drone_inspection"}
+    ]
+  },
+  {
+    "id": "drone_inspection",
+    "text": "The drone reports the main capacitor has blown. You realize you need a delicate touch and steady nerves for the repair. You must use the heavy-duty toolkit.",
+    "choices": [
+      {"label": "Repair the capacitor (Risk health)", "next": "ending_repair", "health_change": -10}
+    ]
+  },
+  {
+    "id": "override_attempt",
+    "text": "You bravely attempt the manual override. The Recycler stabilizes just as the pressure alarm stops. Your courage was just enough. You saved the colony!",
+    "choices": [
+      {"label": "Check diagnostics", "next": "ending_heroic"}
+    ]
+  },
+  {
+    "id": "ending_heroic",
+    "text": "END: **The Hero of Outpost 7**. You successfully bypassed the fault and secured the colony. Your quick action and high courage saved everyone. The repair is permanent. You win!",
+    "choices": []
+  },
+  {
+    "id": "ending_repair",
+    "text": "END: **The Costly Fix**. You repaired the capacitor, but the high voltage leaves you severely injured (Health reduced). The colony is stable, but you need immediate medical attention. A successful but painful victory.",
+    "choices": []
+  },
+  {
+    "id": "ending_failed",
+    "text": "END: **Colony Collapse**. Due to low courage, you hesitated too long, or you failed the critical repair. The oxygen ran out. The outpost is lost.",
+    "choices": []
+  }
+]
