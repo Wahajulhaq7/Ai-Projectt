@@ -9,11 +9,14 @@ def run_ui():
 
     st.set_page_config(layout="wide", page_title="AI Virtual Travel Guide")
 
+    # --- FIXED CSS ---
+    # I removed 'header {visibility: hidden;}' and '#MainMenu {visibility: hidden;}'
+    # so the Sidebar Toggle arrow stays visible.
     hide_st_style = """
     <style>
-    #MainMenu {visibility: hidden;}
+    /* Hides the "Made with Streamlit" footer */
     footer {visibility: hidden;}
-    header {visibility: hidden;}
+    /* Hides the deployment status/manage app button in the bottom corner */
     .stDeployButton {visibility: hidden;} 
     .stStatusWidget {visibility: hidden;}
     </style>
@@ -50,7 +53,7 @@ def run_ui():
     ]
     origin_city = st.sidebar.selectbox("1. Traveling From (Pakistan)", pak_cities)
 
-    # CHANGED: Slider -> Number Input (Max 3000)
+    # Budget Input (Max 3000)
     budget = st.sidebar.number_input(
         "2. Max Daily Budget ($USD)", 
         min_value=50, 
@@ -67,7 +70,6 @@ def run_ui():
 
     st.sidebar.markdown("---")
     
-    # REMOVED: Preferred Mode Selectbox (Previously here)
     st.sidebar.header("🚆 Transport Prefs")
     inside_city = st.sidebar.selectbox("Inside City", ["metro", "taxi", "rental car", "walk"])
     airline_pref = st.sidebar.radio("Class", ["Cheap", "Comfortable"])
@@ -82,7 +84,6 @@ def run_ui():
                 "budget": budget,
                 "duration": duration,
                 "interests": interests,
-                # "travel_mode": removed, default is assumed to be Flight in core logic
                 "inside_city": inside_city,
                 "airline_pref": airline_pref
             }
